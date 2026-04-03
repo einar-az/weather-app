@@ -1,6 +1,7 @@
 "use client";
 
 import { CitySearch } from "@/components/CitySearch";
+import { LocationBackdrop } from "@/components/LocationBackdrop";
 import { WeatherPanel } from "@/components/WeatherPanel";
 import {
   type ForecastBundle,
@@ -60,7 +61,9 @@ export function WeatherApp() {
   }, []);
 
   return (
-    <div className="mx-auto flex w-full max-w-4xl flex-col items-center gap-12 px-4 pb-24 pt-16 md:px-8 md:pt-24">
+    <>
+      <LocationBackdrop place={place} />
+      <div className="relative z-10 mx-auto flex w-full max-w-4xl flex-col items-center gap-12 px-4 pb-24 pt-16 md:px-8 md:pt-24">
       <header className="text-center">
         <p className="text-xs font-medium uppercase tracking-[0.2em] text-sky-200/80">
           Forecast
@@ -104,5 +107,6 @@ export function WeatherApp() {
         </div>
       ) : null}
     </div>
+    </>
   );
 }
