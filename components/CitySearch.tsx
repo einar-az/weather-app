@@ -79,7 +79,9 @@ export function CitySearch({ onSelect, selectedLabel }: CitySearchProps) {
     [onSelect]
   );
 
-  const showList = open && query.trim().length >= 2 && (loading || results.length > 0 || error);
+  const showList = Boolean(
+    open && query.trim().length >= 2 && (loading || results.length > 0 || error)
+  );
 
   return (
     <div ref={wrapRef} className="relative w-full max-w-xl">
@@ -157,7 +159,7 @@ export function CitySearch({ onSelect, selectedLabel }: CitySearchProps) {
           className="absolute z-20 mt-3 max-h-80 w-full overflow-auto rounded-2xl border border-white/12 bg-slate-950/90 py-2 shadow-panel shadow-black/60 backdrop-blur-xl"
         >
           {error ? (
-            <li className="px-4 py-3 text-sm text-rose-300/90" role="option">
+            <li className="px-4 py-3 text-sm text-rose-300/90" role="option" aria-selected={false}>
               {error}
             </li>
           ) : loading ? (
